@@ -21,7 +21,7 @@ export default function Login() {
                             <input placeholder='Enter an email' type="text" />
                             <input placeholder='Enter password' type="text" />
                             <button>Login</button>
-                            <p>Forgot password?</p>
+                            <p>Forgot password??</p>
                         </div>
                         <div className="signup-btn">
                             <button>Signup</button>
