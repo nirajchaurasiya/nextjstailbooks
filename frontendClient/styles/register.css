@@ -1,0 +1,87 @@
+.register-user-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.register-box-model {
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+  align-items: center;
+  background-color: aqua;
+  border-radius: 10px;
+  padding: 40px;
+}
+.register-content h1 {
+  font-size: 40px;
+  margin-bottom: 5%;
+}
+.register-content p {
+  font-size: 15px;
+  width: 70%;
+}
+.register-inputs-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px;
+}
+.register-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.register-inputs input {
+  padding: 10px;
+  border-radius: 5px;
+}
+.register-inputs button {
+  padding: 10px;
+  background-color: rgb(119, 227, 119);
+  border: 1px solid rgb(157, 154, 154);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.signup-btn button {
+  width: 100%;
+  background-color: rgb(130, 103, 255);
+  border: 1px solid rgb(157, 154, 154);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.register-inputs p {
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  width: fit-content;
+}
+
+@media (max-width: 700px) {
+  .register-box-model {
+    flex-direction: column;
+  }
+  .register-inputs-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 350px;
+  }
+  .register-box-model {
+    padding: 20px;
+  }
+}
+@media (max-width: 500px) {
+  .register-inputs-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 250px;
+  }
+}

@@ -14,12 +14,17 @@ export default function Body({ profile, userId }) {
     return (
         <>
 
-            {isAuth ? <div className="main-body">
-                <Nav />
-                <Sidebar />
-                <Feed profile={profile} userId={userId} />
-                {!profile ? <Rightbar /> : <RightBarProfile />}
-            </div> : <Login />}
+            {isAuth ?
+                <>
+                    <Nav />
+                    <div className="main-body">
+
+                        <Sidebar />
+                        <Feed profile={profile} userId={userId} />
+                        {!profile ? <Rightbar /> : <RightBarProfile />}
+                    </div>
+                </>
+                : <Login />}
         </>
     )
 }

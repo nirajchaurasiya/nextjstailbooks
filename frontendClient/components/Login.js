@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
+import Register from './Register'
 export default function Login() {
+    const [showRegister, setShowRegister] = useState(true)
     return (
         <>
             <Head>
@@ -10,7 +12,7 @@ export default function Login() {
                 <link rel="icon" type="image/png" sizes="16x16" href="/images.png" />
                 <link rel="manifest" href="/site.webmanifest" />
             </Head>
-            <div className="login-user-box">
+            {showRegister ? <div className="login-user-box">
                 <div className="login-box-model">
                     <div className="login-content">
                         <h1>Login Now</h1>
@@ -24,7 +26,7 @@ export default function Login() {
                             <p>Forgot password??</p>
                         </div>
                         <div className="signup-btn">
-                            <button>Signup</button>
+                            <button onClick={() => { setShowRegister(!showRegister) }}>Signup</button>
                         </div>
                         <div className="demo-account-details">
                             <p>For Demo:</p><br />
@@ -35,7 +37,7 @@ export default function Login() {
 
                 </div>
 
-            </div>
+            </div> : <Register />}
         </>
     )
 }

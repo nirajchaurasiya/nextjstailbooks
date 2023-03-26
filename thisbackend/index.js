@@ -6,6 +6,8 @@ const cors = require('cors')
 const morgan = require('morgan')
 require('dotenv').config()
 require('./connect/connect')
+const uploadProfileImage = require('./imagecontroller/ProfileImageController')
+const CoverImage = require('./imagecontroller/CoverImage')
 const PORT = process.env.PORT
 const auth = require('./Router/auth/auth')
 const posts = require('./Router/posts/posts')
@@ -25,7 +27,21 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.post('/post/profile/image', uploadProfileImage.single('profile'), async (req, res) => {
+    try {
+        res.status(200).json("Image uploaded successfuk")
+    } catch (error) {
+        res.status(500).json("An unexpected error occured")
+    }
+})
 
+app.post('/post/cover/image', CoverImage.single('profile'), async (req, res) => {
+    try {
+        res.status(200).json("Image uploaded successfuk")
+    } catch (error) {
+        res.status(500).json("An unexpected error occured")
+    }
+})
 
 
 app.use('/api/user', user);
