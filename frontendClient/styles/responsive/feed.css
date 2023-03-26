@@ -1,0 +1,23 @@
+@media (max-width: 750px) {
+  .feed {
+    flex: 2;
+    padding: 10px;
+    height: 100vh;
+    overflow-y: scroll;
+    padding-bottom: 40%;
+  }
+  .rightbar-menu {
+    display: none;
+  }
+  .sidebar-menu {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .rightbar-menu {
+    display: none;
+  }
+  .sidebar-menu {
+    display: none;
+  }
+}

@@ -1,0 +1,35 @@
+@media (max-width: 680px) {
+  .navbar {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+  }
+  .navbar .first-menu {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 3%;
+  }
+  .navbar .first-menu .logo {
+    text-align: center;
+    margin-bottom: 2%;
+  }
+}
+
+@media (max-width: 400px) {
+  .navbar {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+  }
+  .navbar .first-menu .search-box div input {
+    width: 200px;
+  }
+}
+@media (max-width: 1000px) {
+  .navbar {
+    width: 100%;
+  }
+}

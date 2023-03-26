@@ -1,0 +1,117 @@
+.navbar {
+  background-color: var(--nav-color);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: row;
+  width: 90vw;
+  justify-content: space-between;
+  margin: auto;
+  padding: 10px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  -webkit-box-shadow: 1px -1px 5px 0px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: 1px -1px 5px 0px rgba(247, 239, 239, 0.75);
+  box-shadow: 1px 0px 3px 0px rgba(217, 251, 252, 0.75);
+}
+.navbar .first-menu {
+  display: flex;
+  gap: 10px;
+  align-self: center;
+}
+.navbar .first-menu .logo img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.navbar .first-menu .search-box {
+  display: flex;
+  align-items: center;
+  border: 0.3px solid rgb(85, 83, 83);
+  background-color: transparent;
+  border-radius: 50px;
+}
+.navbar .first-menu .search-box div input {
+  height: 23px;
+  padding: 3%;
+  width: 300px;
+  color: black;
+  background-color: transparent;
+  border-left: none;
+  border-radius: 50px;
+}
+.navbar .first-menu .search-box div input::placeholder {
+  color: black;
+}
+
+.navbar .first-menu .search-box div button {
+  background-color: transparent;
+  font-size: 20px;
+  display: flex;
+  cursor: pointer;
+  color: black;
+  padding-right: 3px;
+  padding-bottom: 1px;
+}
+.navbar .second-menu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.navbar .second-menu ul li {
+  font-size: 20px;
+  cursor: pointer;
+  color: rgb(19, 19, 102);
+}
+.navbar .second-menu ul li img {
+  height: 25px;
+  width: 25px;
+  border-radius: 50px;
+  object-fit: cover;
+}
+.profile-togglebar {
+  position: absolute;
+  right: 5vw;
+  z-index: 10;
+  background-color: rgb(230, 251, 254);
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  height: 70vh;
+}
+.profile-toggle-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  border-radius: 50px;
+  padding: 5px;
+}
+.profile-toggle-bar img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  object-fit: cover;
+}
+.more-options-toggle-bar {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 5%;
+}
+.profile-togglebar-darkmode {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  font-size: 18px;
+}

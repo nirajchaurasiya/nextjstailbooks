@@ -1,0 +1,54 @@
+.feed-content {
+  -webkit-box-shadow: -1px 1px 3px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: -1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+  margin-bottom: 15px;
+}
+.feed-posts-box {
+  padding: 10px;
+}
+.feed-posts-box .feed-contents {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+.feed-posts-box .feed-contents .profile-picture-owner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.feed-posts-box .feed-contents .profile-picture-owner img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+.posts-description {
+  padding: 5px 5px 10px 6%;
+}
+.posts-description p {
+  font-size: 13px;
+}
+.posts-images img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+.posts-like-subscribe {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.like-posts {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 5px;
+}
+.like-posts:last-child {
+  border-bottom: 1px dashed black;
+  width: fit-content;
+}
+.hr-line-afterphoto {
+  padding-top: 1%;
+}

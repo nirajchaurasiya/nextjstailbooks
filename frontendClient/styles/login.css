@@ -1,0 +1,87 @@
+.login-user-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.login-box-model {
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+  align-items: center;
+  background-color: aqua;
+  border-radius: 10px;
+  padding: 40px;
+}
+.login-content h1 {
+  font-size: 40px;
+  margin-bottom: 5%;
+}
+.login-content p {
+  font-size: 15px;
+  width: 70%;
+}
+.login-inputs-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px;
+}
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.login-inputs input {
+  padding: 15px;
+  border-radius: 5px;
+}
+.login-inputs button {
+  padding: 15px;
+  background-color: rgb(119, 227, 119);
+  border: 1px solid rgb(157, 154, 154);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.signup-btn button {
+  width: 100%;
+  background-color: rgb(130, 103, 255);
+  border: 1px solid rgb(157, 154, 154);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.login-inputs p {
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  width: fit-content;
+}
+
+@media (max-width: 700px) {
+  .login-box-model {
+    flex-direction: column;
+  }
+  .login-inputs-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 350px;
+  }
+  .login-box-model {
+    padding: 20px;
+  }
+}
+@media (max-width: 500px) {
+  .login-inputs-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 250px;
+  }
+}

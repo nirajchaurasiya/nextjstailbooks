@@ -1,0 +1,78 @@
+.sidebar-menu {
+  flex: 1.2;
+  padding-bottom: 2%;
+}
+.sidebar-menu {
+  position: sticky;
+  height: calc(100vh - 30px);
+  top: 0;
+  overflow-y: scroll;
+}
+.sidebar-menu .sidebar-menu-content {
+  padding: 20px;
+}
+.sidebar-menu .sidebar-menu-content .right-bar-box {
+  display: grid;
+  gap: 10px;
+}
+.sidebar-menu .sidebar-menu-content .right-bar-box .boxes .profile-images {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgb(230, 232, 232);
+  border-radius: 50px;
+  cursor: pointer;
+  padding: 3px;
+}
+
+.sidebar-menu .sidebar-menu-content .right-bar-box .boxes .profile-images img {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+}
+
+.sidebar-menu
+  .sidebar-menu-content
+  .right-bar-box
+  .boxes
+  .profile-images
+  .profile-name {
+  font-weight: 500;
+}
+
+.sidebar-menu .sidebar-menu-content .right-bar-box .boxes .profile-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sidebar-menu
+  .sidebar-menu-content
+  .right-bar-box
+  .boxes
+  .profile-icon
+  .right-bar-icon {
+  font-size: 20px;
+}
+
+.hr-sidebar-line {
+  border: 1px solid black;
+  width: 100%;
+  margin: auto;
+}
+.btn-show-more {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.sidebar-icon-wrap-up {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sidebar-icon-wrap-up .boxes {
+  cursor: pointer;
+}
