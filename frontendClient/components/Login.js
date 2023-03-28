@@ -1,8 +1,41 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 import Register from './Register'
+import axios from 'axios';
 export default function Login() {
     const [showRegister, setShowRegister] = useState(true)
+    const email = useRef();
+    const password = useRef();
+    useEffect(() => {
+        if (localStorage.getItem('tailbooknetlifyuser')) {
+            window.location.href = '/'
+        }
+    }, [])
+    const loginHandleBtn = () => {
+        try {
+            const datas = {
+                email: email.current.value,
+                password: password.current.value
+            }
+            axios.post('/backend/api/auth/login', datas)
+                .then((data) => {
+                    // console.log(data.data)
+                    if (data.data.code === "1") {
+                        localStorage.setItem('tailbooknetlifyuser', JSON.stringify(data.data.user))
+                        window.location.reload();
+                    }
+                    else {
+                        console.log("Error")
+                    }
+
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
         <>
             <Head>
@@ -20,9 +53,9 @@ export default function Login() {
                     </div>
                     <div className="login-inputs-btn">
                         <div className="login-inputs">
-                            <input placeholder='Enter an email' type="text" />
-                            <input placeholder='Enter password' type="text" />
-                            <button>Login</button>
+                            <input ref={email} placeholder='Enter an email' type="email" />
+                            <input ref={password} placeholder='Enter password' type="password" />
+                            <button onClick={loginHandleBtn}>Login</button>
                             <p>Forgot password??</p>
                         </div>
                         <div className="signup-btn">

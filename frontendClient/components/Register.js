@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react'
 import Head from 'next/head'
 import Login from './Login'
+import axios from 'axios'
 export default function Register() {
     const [showLogin, setShowLogin] = useState(true)
     const [profile, setProfile] = useState('')
-    const [cover, setCover] = useState('')
+    const name = useRef();
     const email = useRef();
     const phone = useRef();
     const password = useRef();
@@ -15,13 +16,31 @@ export default function Register() {
     const city = useRef();
     const hobbies = useRef();
     const status = useRef();
-    const handleClickRegister = () => {
+    const handleClickRegister = async (e) => {
+        e.preventDefault();
         try {
-            if (profile) {
+            const fd = new FormData();
+            fd.append('name', name.current.value);
+            fd.append('email', email.current.value);
+            fd.append('phone', phone.current.value);
+            fd.append('password', password.current.value);
+            fd.append('shortquote', shortquote.current.value);
+            fd.append('aboutyourself', aboutyourself.current.value);
+            fd.append('from', from.current.value);
+            fd.append('city', city.current.value);
+            fd.append('hobbies', hobbies.current.value);
+            fd.append('status', status.current.value);
+            fd.append('profile', profile);
 
-            }
+            await axios.post('/backend/api/auth/register', fd)
+                .then((data) => {
+                    console.log(data.data.msg)
+                })
+                .catch((err) => {
+                    console.log("Error")
+                })
         } catch (error) {
-
+            console.log("An unexpected error occured")
         }
     }
     return (
@@ -41,7 +60,8 @@ export default function Register() {
                     </div>
                     <div className="register-inputs-btn">
                         <span style={{ color: "red", fontSize: "14px" }}>* = required</span>
-                        <div className="register-inputs">
+                        <form className="register-inputs" encType="multipart/form-data" onSubmit={handleClickRegister}>
+                            <input ref={name} placeholder='Enter your name*' type="text" />
                             <input ref={email} placeholder='Enter an email*' type="email" />
                             <input ref={phone} placeholder='Enter phone*' type="text" />
                             <input ref={password} placeholder='Enter an password*' type="password" />
@@ -52,10 +72,9 @@ export default function Register() {
                             <input ref={city} placeholder='City name?' type="text" />
                             <input ref={hobbies} placeholder='Hobbies' type="text" />
                             <input ref={status} placeholder='Married or Single or In a relationship or Relationship' type="text" />
-                            <div><input placeholder='Hobbies' type="file" onChange={(e) => { setProfile(e.target.files[0]) }} />profile</div>
-                            <div><input placeholder='Married or Single or In a relationship or Relationship*' onChange={(e) => { setProfile(e.target.files[0]) }} type="file" />Cover</div>
-                            <button onClick={handleClickRegister}>Register</button>
-                        </div>
+                            <div><input placeholder='Hobbies' name='profile' id='profile' type="file" onChange={(e) => { setProfile(e.target.files[0]); console.log(e.target.files[0]) }} />profile</div>
+                            <button type='submit'>Register</button>
+                        </form>
                         <div className="signup-btn">
                             <button onClick={() => { setShowLogin(!showLogin) }}>Login</button>
                         </div>

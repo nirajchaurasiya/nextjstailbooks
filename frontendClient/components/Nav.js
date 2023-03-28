@@ -3,7 +3,7 @@ import { AiFillDashboard, AiFillFlag, AiFillHighlight, AiFillHome, AiFillLike, A
 import { BiGroup } from 'react-icons/bi'
 import Head from 'next/head'
 import Link from 'next/link'
-export default function Nav() {
+export default function Nav({ userdata }) {
     const [showProfileBtnClicked, setShowProfileBtnClicked] = useState(false)
     return (
         <>
@@ -31,7 +31,7 @@ export default function Nav() {
                         <Link href='/'><li><AiFillHome /></li></Link>
                         <Link href='/watch/video'><li><AiFillVideoCamera /></li></Link>
                         <Link href='/findfriends'><li><BiGroup /></li></Link>
-                        <li onClick={() => { setShowProfileBtnClicked(!showProfileBtnClicked) }}><img src="/profile.jpeg" alt="" />
+                        <li onClick={() => { setShowProfileBtnClicked(!showProfileBtnClicked) }}><img src={`/backend/${userdata.profile}`} alt="" />
 
                         </li>
                     </ul>
@@ -40,7 +40,7 @@ export default function Nav() {
 
             </div>
             {showProfileBtnClicked && <ul className="profile-togglebar">
-                <Link href='/profile/efefwefw' style={{ textDecoration: "none" }}><li className='profile-toggle-bar'><img src="/profile.jpeg" alt="" />Niraj Chaurasiya</li></Link>
+                <Link href={`/profile/${userdata._id}`} style={{ textDecoration: "none" }}><li className='profile-toggle-bar'><img src={`/backend/${userdata.profile}`} alt="" />Niraj Chaurasiya</li></Link>
                 <ul className="more-options-toggle-bar">
                     <li className='profile-togglebar-darkmode'><AiFillDashboard /> Dark Mode</li>
                     <li className='profile-togglebar-darkmode'><AiFillHighlight color='gray' /> Light Mode</li>

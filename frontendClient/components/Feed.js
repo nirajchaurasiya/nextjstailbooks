@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Share from './Share'
 import Post from './Post'
 import Spinner from './Spinner'
 import Profile from './Profile'
-export default function Feed({ profile, userId }) {
+export default function Feed({ profile, userId, userdata }) {
+    const [localstoreUserId, setlocalstoreUserId] = useState('')
+    useEffect(() => {
+        if (localStorage) {
+            setlocalstoreUserId(JSON.parse(localStorage?.getItem('tailbooknetlifyuser'))._id)
+        }
+    }, [userId])
+
     return (
         <div className='feed'>
-            {profile && <Profile />}
-            {userId === 'f32f2323e21' && <Share />}
+            {profile && <Profile userdata={userdata} />}
+            {userId === localstoreUserId && <Share userdata={userdata} />}
             <br />
+            <Post />
+            <Post />
             <Post />
             <Post />
             <Post />

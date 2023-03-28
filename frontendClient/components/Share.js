@@ -1,8 +1,7 @@
-import React from 'react'
 import { AiOutlineVideoCamera } from 'react-icons/ai'
 import { BiHappy, BiLocationPlus } from 'react-icons/bi'
 
-export default function Share() {
+export default function Share({ userdata }) {
     return (
         <div className='share-posts-box'>
             <div className="share-contents">
@@ -10,11 +9,11 @@ export default function Share() {
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvTNGsJGejNSCgyM6_xil5AGI-kkQdXvMvRH0eE0HFWA&s" alt="" />
                 </div>
                 <div className="share-name-owners">
-                    <p className='name-of-the-owner'><span style={{ color: "red", fontSize: "15px" }}>Welcome, Niraj Chaurasiya</span> </p>
+                    <p className='name-of-the-owner'><span style={{ color: "red", fontSize: "15px" }}>Welcome, {userdata?.name}</span> </p>
                 </div>
             </div>
             <div className="share-posts-input">
-                <textarea placeholder='Whats in your mind, Niraj?' type="text" />
+                <textarea placeholder={`Whats in your mind, ${userdata?.name}?`} type="text" />
             </div>
             <div className="share-icons-methods">
                 <div className="extra-support-icons" style={{ gap: "10px", marginTop: "2%" }}>

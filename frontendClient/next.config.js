@@ -2,6 +2,21 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    unoptimized: true
+
+  }
 }
 
-module.exports = nextConfig
+module.exports = {
+  ...nextConfig,
+  async rewrites() {
+    return [
+      {
+        source: '/backend/:path*',
+        // destination: 'https://backend.nirajchaurasiya.com/:path*',
+        destination: 'http://localhost:5000/:path*',
+      },
+    ]
+  }
+}

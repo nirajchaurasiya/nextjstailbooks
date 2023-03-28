@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { RxCross1 } from 'react-icons/rx'
 import { AiOutlineSend } from 'react-icons/ai'
-export default function RightBarProfile() {
+export default function RightBarProfile({ userdata }) {
     const [showChatBox, setShowChatBox] = useState(false)
     const [msgBoxText, setMsgBoxText] = useState('Message')
     return (
@@ -13,21 +13,21 @@ export default function RightBarProfile() {
                     <div className="boxes">
                         <div className="profile-images">
                             <div className="profile-name" style={{ fontSize: "15px", marginTop: "8%" }}>
-                                <b>Welcome again,</b> <b>Mr. Niraj</b>
+                                <b>Welcome again,</b> <b>Mr. {userdata?.name}</b>
                             </div>
                         </div>
                     </div>
 
                     <div className="boxes">
-                        <span style={{ paddingBottom: "2%", fontSize: "13px" }}>Life is like a boat! There could be many obstacles on way but we should never be stop.</span>
+                        <span style={{ paddingBottom: "2%", fontSize: "13px" }}>{userdata?.aboutyourself}</span>
                         <div className="personal-details">
 
-                            <b>From: <p>Usa</p></b>
-                            <b>City: <p>Ohio</p></b>
-                            <b>Hobbies: <p>Coding, Running</p></b>
-                            <b>Contact Number: <p>9829279569</p></b>
-                            <b>Email: <p>developer.nirajchaurasiya@gmail.com</p></b>
-                            <b>Relationship: <p>Married</p></b>
+                            <b>From: <p>{userdata?.from}</p></b>
+                            <b>City: <p>{userdata?.city}</p></b>
+                            <b>Hobbies: <p>{userdata?.hobbies}</p></b>
+                            <b>Contact Number: <p>{userdata?.phone}</p></b>
+                            <b>Email: <p>{userdata?.email}</p></b>
+                            <b>Relationship: <p>{userdata?.status}</p></b>
 
                         </div>
                         {/* <Link href='/chat/nirajchaurasiya/124e23e211221e2e'> */}

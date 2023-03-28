@@ -5,7 +5,7 @@ import { RiBuilding4Line, RiMessengerLine, RiMovie2Fill } from 'react-icons/ri'
 import { AiFillAmazonCircle, AiOutlineAlipay, AiOutlineAmazon, AiOutlineAreaChart, AiOutlineCode, AiOutlineExperiment, AiOutlineFlag, AiOutlineNumber, AiOutlineSafetyCertificate, AiOutlineShopping, AiOutlineStar, AiOutlineTwitter, AiOutlineWhatsApp } from 'react-icons/ai'
 import { CgGames } from 'react-icons/cg'
 import Link from 'next/link'
-export default function Sidebar() {
+export default function Sidebar({ userdata }) {
     const [btnClick, setBtnClick] = useState(false)
     const [btnText, setBtnText] = useState('Show More')
     const [showMoreShortcuts, setShowMoreShortcuts] = useState(false)
@@ -20,12 +20,12 @@ export default function Sidebar() {
             <div className="sidebar-menu-content">
                 <div className="right-bar-box">
 
-                    <Link href='/profile/f32f2323e21' style={{ textDecoration: "none", color: "var(--text-color)" }}>
+                    <Link href={`/profile/${userdata?._id}`} style={{ textDecoration: "none", color: "var(--text-color)" }}>
                         <div className="boxes">
                             <div className="profile-images">
-                                <img src="/profile.jpeg" alt="" style={{ width: "30px", height: "30px", objectFit: "cover" }} />
+                                <img src={`/backend/${userdata.profile}`} alt="" style={{ width: "30px", height: "30px", objectFit: "cover" }} />
                                 <div className="profile-name">
-                                    <p>Binary Baron</p>
+                                    <p>{userdata?.name}</p>
                                 </div>
                             </div>
                         </div>
