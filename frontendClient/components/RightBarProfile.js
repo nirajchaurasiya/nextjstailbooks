@@ -45,9 +45,9 @@ export default function RightBarProfile({ userdata, userId }) {
 
                         </div>
                         {/* <Link href='/chat/nirajchaurasiya/124e23e211221e2e'> */}
-                        {
-                            JSON.parse(localStorage.getItem('tailbooknetlifyuser'))._id !== userId ? <button onClick={() => { setShowChatBox(!showChatBox); setMsgBoxText(showChatBox ? 'Message' : <RxCross1 style={{ color: "red", fontSize: "13px" }} />) }} className='msg-profile-box'>{msgBoxText}</button> : ""
-                        }
+
+                        <button onClick={() => { setShowChatBox(!showChatBox); setMsgBoxText(showChatBox ? 'Message' : <RxCross1 style={{ color: "red", fontSize: "13px" }} />) }} className='msg-profile-box'>{msgBoxText}</button>
+
                         {/* </Link> */}
                     </div>
 

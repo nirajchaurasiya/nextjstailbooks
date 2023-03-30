@@ -6,7 +6,7 @@ export default function Profile() {
     const router = useRouter()
     const { slug } = router.query
 
-    const [allPosts, setAllPosts] = useState([])
+    const [allPosts, setAllPosts] = useState(null)
     const fetchAllPosts = async () => {
         try {
             const res = await axios.get(`/backend/api/posts/allposts/${slug}`)
