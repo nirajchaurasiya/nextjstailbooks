@@ -37,7 +37,7 @@ export default function Register() {
                     console.log(data.data.msg)
                 })
                 .catch((err) => {
-                    console.log("Error")
+                    console.log(err)
                 })
         } catch (error) {
             console.log("An unexpected error occured")

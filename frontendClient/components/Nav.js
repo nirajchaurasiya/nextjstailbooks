@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { AiFillDashboard, AiFillFlag, AiFillHighlight, AiFillHome, AiFillLike, AiFillSetting, AiFillVideoCamera, AiOutlineHistory, AiOutlineSearch, AiOutlineUsergroupAdd, AiTwotoneWallet } from 'react-icons/ai'
+import { AiFillDashboard, AiFillFlag, AiFillHighlight, AiFillHome, AiFillLike, AiFillSetting, AiFillVideoCamera, AiOutlineHistory, AiOutlineLogout, AiOutlineSearch, AiOutlineUsergroupAdd, AiTwotoneWallet } from 'react-icons/ai'
 import { BiGroup } from 'react-icons/bi'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -40,7 +40,7 @@ export default function Nav({ userdata }) {
 
             </div>
             {showProfileBtnClicked && <ul className="profile-togglebar">
-                <Link href={`/profile/${userdata._id}`} style={{ textDecoration: "none" }}><li className='profile-toggle-bar'><img src={`/backend/${userdata.profile}`} alt="" />Niraj Chaurasiya</li></Link>
+                <Link href={`/profile/${userdata._id}`} style={{ textDecoration: "none" }}><li className='profile-toggle-bar'><img src={`/backend/${userdata.profile}`} alt="" />{userdata.name}</li></Link>
                 <ul className="more-options-toggle-bar">
                     <li className='profile-togglebar-darkmode'><AiFillDashboard /> Dark Mode</li>
                     <li className='profile-togglebar-darkmode'><AiFillHighlight color='gray' /> Light Mode</li>
@@ -49,6 +49,14 @@ export default function Nav({ userdata }) {
                     <li className='profile-togglebar-darkmode'><AiOutlineHistory color='red' /> History</li>
                     <li className='profile-togglebar-darkmode'><AiFillLike color='blue' /> Liked Posts</li>
                     <li className='profile-togglebar-darkmode'><AiTwotoneWallet color='pink' /> What&apos;s new?</li>
+                    <li className='profile-togglebar-darkmode' onClick={() => {
+                        if (confirm("are you sure, you want to logout?")) {
+                            localStorage.clear();
+                            window.location.reload();
+                        } else {
+                            alert("Good Choice")
+                        }
+                    }}><AiOutlineLogout color='black' /> Logout</li>
                 </ul>
             </ul>}
         </>

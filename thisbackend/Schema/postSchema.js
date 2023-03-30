@@ -9,7 +9,16 @@ const postSchema = mongoose.Schema({
     postImage: {
         type: String,
     },
-    likes: [String],
+    name: {
+        type: String,
+    },
+    userImage: {
+        type: String,
+    },
+    likes: {
+        type: [String],
+        default: ''
+    },
     comment: [
         {
             userName: {
@@ -25,6 +34,7 @@ const postSchema = mongoose.Schema({
                 default: ''
             }
         }
+
     ]
 }, {
     timestamps: true

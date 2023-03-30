@@ -1,12 +1,12 @@
 const Router = require('express').Router();
 const userSchema = require('../../Schema/userSchema')
 const bcrypt = require('bcrypt')
-const CoverImage = require('../../imagecontroller/CoverImage');
+const CoverImageAndAllData = require('../../imagecontroller/CoverImage');
 
-Router.post('/register', CoverImage.single('profile'), async (req, res) => {
+Router.post('/register', CoverImageAndAllData.single('profile'), async (req, res) => {
     try {
         const existingUser = await userSchema.findOne({ email: req.body.email });
-        console.log(req.body)
+        // console.log(req.body)
         if (existingUser) {
             res.send({ msg: 'User with this email already exists' });
         }
@@ -42,17 +42,56 @@ Router.post('/login', async (req, res) => {
         if (isEmailExist) {
             const isPasswordSame = await bcrypt.compare(password, isEmailExist.password);
             if (isPasswordSame) {
-                res.status(200).json({ "code": "1", "user": isEmailExist });
+                res.send({ "code": "1", "user": isEmailExist });
             }
             else {
-                res.status(503).json('Invalid Credentials')
+                res.send({ "code": "0", "msg": 'Invalid Credentials' })
             }
         }
         else {
-            res.status(503).json("Invalid Credentials")
+            res.send({ "code": "0", "msg": 'Invalid Credentials' })
         }
     } catch (error) {
         res.send("An unexpected error occured")
+    }
+})
+
+Router.post('/updateCover/:userId', CoverImageAndAllData.single('cover'), async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const file = req.file.path;
+        const findTheUser = await userSchema.findById(userId)
+        if (findTheUser) {
+            await userSchema.findByIdAndUpdate(userId, { $set: { cover: file } });
+            const findTheUpdatedUser = await userSchema.findById(userId)
+            // res.send(findTheUpdatedUser)
+            res.send({ "status": "1", "msg": findTheUpdatedUser });
+            // res.send({ "status": "1", "msg": 'Your cover picture has been updated successfully' });
+
+        }
+        else {
+            res.send({ "status": "0", "msg": 'You can update cover to only your account' });
+        }
+    } catch (error) {
+        res.send({ "status": "0", "msg": 'Upload Failed' })
+    }
+})
+
+Router.post('/updateProfile/:userId', CoverImageAndAllData.single('cover'), async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const file = req.file.path;
+        const findTheUser = await userSchema.findById(userId)
+        if (findTheUser) {
+            await userSchema.findByIdAndUpdate(userId, { $set: { profile: file } });
+            const findTheUpdatedUser = await userSchema.findById(userId)
+            res.send({ "status": "1", "msg": findTheUpdatedUser });
+        }
+        else {
+            res.send({ "status": "0", "msg": 'You can update profile to only your account' });
+        }
+    } catch (error) {
+        res.send({ "status": "0", "msg": 'Upload Failed' })
     }
 })
 

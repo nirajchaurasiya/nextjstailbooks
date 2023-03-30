@@ -1,10 +1,24 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { RxCross1 } from 'react-icons/rx'
 import { AiOutlineSend } from 'react-icons/ai'
-export default function RightBarProfile({ userdata }) {
+import axios from 'axios'
+export default function RightBarProfile({ userdata, userId }) {
     const [showChatBox, setShowChatBox] = useState(false)
     const [msgBoxText, setMsgBoxText] = useState('Message')
+    const [allUsers, setAllUsers] = useState([])
+    const fetchAllUser = async () => {
+        await axios.get('/backend/api/user/alluser')
+            .then((data) => {
+                setAllUsers(data.data.user)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+    useEffect(() => {
+        fetchAllUser()
+    }, [userId])
     return (
         <div className="rightbarprofile-menu">
             <div className="rightbarprofile-menu-content">
@@ -31,7 +45,9 @@ export default function RightBarProfile({ userdata }) {
 
                         </div>
                         {/* <Link href='/chat/nirajchaurasiya/124e23e211221e2e'> */}
-                        <button onClick={() => { setShowChatBox(!showChatBox); setMsgBoxText(showChatBox ? 'Message' : <RxCross1 style={{ color: "red", fontSize: "13px" }} />) }} className='msg-profile-box'>{msgBoxText}</button>
+                        {
+                            JSON.parse(localStorage.getItem('tailbooknetlifyuser'))._id !== userId ? <button onClick={() => { setShowChatBox(!showChatBox); setMsgBoxText(showChatBox ? 'Message' : <RxCross1 style={{ color: "red", fontSize: "13px" }} />) }} className='msg-profile-box'>{msgBoxText}</button> : ""
+                        }
                         {/* </Link> */}
                     </div>
 
@@ -39,15 +55,15 @@ export default function RightBarProfile({ userdata }) {
                     <div className='profile-friends'>
                         <p>User&apos;s Friends</p>
                         <div className="your-friends-profile">
-                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 13, 15, 16, 17, 18, 19, 20].map((e) => {
+                            {allUsers.map((e) => {
                                 return (
-                                    <Link key={e} href={`/profile/${e}`} style={{ color: "var(--text-color)", textDecoration: "none" }}>
+                                    <Link key={e} href={`/profile/${e._id}`} style={{ color: "var(--text-color)", textDecoration: "none" }}>
                                         <div>
                                             <div className="profile-images-user-friends">
-                                                <img src="/profile2.jpeg" alt="" />
+                                                <img src={`/backend/${e.profile}`} alt="" />
                                             </div>
                                             <div className="name-user-friends">
-                                                <p>Ram Patel Choudhary</p>
+                                                <p>{e.name}</p>
                                             </div>
                                         </div>
                                     </Link>

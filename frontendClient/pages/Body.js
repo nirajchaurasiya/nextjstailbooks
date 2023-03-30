@@ -5,13 +5,13 @@ import RightBarProfile from '../components/RightBarProfile'
 import { useEffect, useState } from "react";
 import Nav from '../components/Nav'
 import axios from "axios";
-export default function Body({ profile, userId }) {
+export default function Body({ profile, userId, watch, allPosts }) {
     const [userData, setUserData] = useState([])
+    const [userProfile, setUserProfile] = useState('')
     const [userNotFound, setUserNotFound] = useState(false)
     useEffect(() => {
 
         const localstore = JSON.parse(localStorage.getItem('tailbooknetlifyuser'))
-        console.log(localstore)
         if (!localstore) {
             window.location.href = '/login'
         }
@@ -38,7 +38,23 @@ export default function Body({ profile, userId }) {
                 console.log(error)
             }
         }
-    }, [])
+        fetchSpcificuser(userId);
+    }, [userId])
+
+    const fetchSpcificuser = async (userId) => {
+        try {
+            await axios.get(`/backend/api/user/user/${userId}`)
+                .then((data) => {
+                    console.log(data.data.user)
+                    setUserProfile(data.data.user)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        } catch (error) {
+
+        }
+    }
     if (userNotFound) {
         return (
             <div>
@@ -54,8 +70,8 @@ export default function Body({ profile, userId }) {
             <div className="main-body">
 
                 <Sidebar userdata={userData} />
-                <Feed profile={profile} userId={userId} userdata={userData} />
-                {!profile ? <Rightbar /> : <RightBarProfile userdata={userData} />}
+                <Feed allposts={allPosts} profile={profile} userId={userId} userdata={userProfile} watch={watch} />
+                {!profile ? <Rightbar userId={userId} /> : <RightBarProfile userdata={userProfile} userId={userId} />}
             </div>
 
         </>

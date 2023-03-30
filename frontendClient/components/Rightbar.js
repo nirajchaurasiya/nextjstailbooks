@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AiOutlinePlus, AiOutlineSend } from 'react-icons/ai'
 import { useState } from 'react'
 import { RxCross1 } from 'react-icons/rx'
-export default function Rightbar() {
+import axios from 'axios'
+export default function Rightbar({ userId }) {
     const [showChatBox, setShowChatBox] = useState(false)
     const [msgBoxText, setMsgBoxText] = useState('Message')
+    const [profile, setProfile] = useState('')
+    const [name, setName] = useState('')
+    const [allUsers, setAllUsers] = useState([])
+    const fetchAllUser = async () => {
+        await axios.get('/backend/api/user/alluser')
+            .then((data) => {
+                setAllUsers(data.data.user)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+    useEffect(() => {
+        fetchAllUser()
+    }, [userId])
     return (
         <div className="rightbar-menu">
             <div className="rightbar-menu-content">
@@ -28,15 +44,15 @@ export default function Rightbar() {
                     <hr className="hr-rightbar-line" />
                     <div className="online-friends">
                         <p>Online Friends</p>
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map((e) => {
+                        {allUsers.map((e) => {
                             return (
-                                <div key={e} className="online-friends-box" onClick={() => { setShowChatBox(!showChatBox); setMsgBoxText(showChatBox ? 'Message' : <RxCross1 style={{ color: "red", fontSize: "13px" }} />) }}>
+                                <div key={e._id} className="online-friends-box" onClick={() => { setShowChatBox(!showChatBox); setName(e.name); setProfile(`/backend/${e.profile}`); setMsgBoxText(showChatBox ? 'Message' : <RxCross1 style={{ color: "red", fontSize: "13px" }} />) }}>
                                     <div className="online-friends-img">
-                                        <img src="/ads.jpeg" alt="" />
+                                        <img src={`/backend/${e?.profile}`} alt="" />
                                         <span className='green-color-photo-online'></span>
                                     </div>
                                     <div className="online-friends-name">
-                                        <span>Niraj Chaurasiya</span>
+                                        <span>{e?.name}</span>
                                     </div>
                                 </div>
                             )
@@ -46,8 +62,8 @@ export default function Rightbar() {
                         <div className="user-chat">
                             <div className='show-chat-box-toggle'>
                                 <div className="top-chat-box">
-                                    <img src="/profile2.jpeg" alt="" />
-                                    <span>Niraj Chaurasiya</span>
+                                    <img src={profile} alt="" />
+                                    <span>{name}</span>
                                 </div>
                                 <RxCross1 onClick={() => { setShowChatBox(!showChatBox); setMsgBoxText(showChatBox ? 'Message' : <RxCross1 style={{ color: "red", fontSize: "13px" }} />) }} style={{ color: "black", fontSize: "20px", cursor: "pointer" }} />
                             </div>

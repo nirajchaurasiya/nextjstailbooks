@@ -13,9 +13,19 @@ Router.get('/user/:userId', async (req, res) => {
             res.send({ code: 0 })
         }
     } catch (error) {
-        res.send({ code: 2 })
+        res.send({ code: 0 })
     }
 })
 
+
+Router.get('/alluser', async (req, res) => {
+    try {
+        const isUserFind = await userSchema.find();
+
+        res.send({ code: 1, user: isUserFind })
+    } catch (error) {
+        res.send({ code: 0 })
+    }
+})
 
 module.exports = Router

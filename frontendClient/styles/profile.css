@@ -9,6 +9,14 @@
 .profile-picture .user-profile {
   margin-top: -100px;
 }
+.profile-picture button {
+  background-color: rgb(236, 233, 233);
+  cursor: pointer;
+  text-align: center;
+  height: 20px;
+  width: 100px;
+  text-align: center;
+}
 .profile-picture .user-profile img {
   width: 200px;
   height: 200px;
@@ -49,4 +57,21 @@
 .personal-details b p {
   font-size: 13px;
   font-weight: normal;
+}
+.upload-cover-from-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+}
+.upload-cover-from-profile button {
+  width: fit-content;
+  padding: 4px;
+  background-color: #f3efef;
+  border-radius: 5px;
+  cursor: pointer;
+  /* top: 0; */
+}
+.upload-cover-from-profile input {
+  width: 180px;
 }
