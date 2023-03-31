@@ -18,8 +18,8 @@ app.use(server.json());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }))
 app.use(morgan("common"));
 const corsOptions = {
-    origin: 'http://localhost:3000'
-    // origin: 'https://main--tailbooks.netlify.app'
+    // origin: 'http://localhost:3000'
+    origin: 'https://tailbooks.netlify.app'
 };
 app.use(cors(corsOptions))
 app.use(function (req, res, next) {
