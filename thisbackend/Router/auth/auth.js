@@ -8,7 +8,7 @@ Router.post('/register', CoverImageAndAllData.single('profile'), async (req, res
         const existingUser = await userSchema.findOne({ email: req.body.email });
         // console.log(req.body)
         if (existingUser) {
-            res.send({ msg: 'User with this email already exists' });
+            res.send({ code: 2, msg: 'User with this email already exists' });
         }
 
         else {
@@ -27,10 +27,10 @@ Router.post('/register', CoverImageAndAllData.single('profile'), async (req, res
                 cover: '',
                 profile: file
             });
-            res.status(200).json({ msg: "User created successfully" })
+            res.status(200).json({ code: 1, msg: "User created successfully" })
         }
     } catch (error) {
-        res.send({ msg: error });
+        res.send({ code: 0, msg: error });
     }
 });
 

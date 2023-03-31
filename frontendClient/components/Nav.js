@@ -52,7 +52,7 @@ export default function Nav({ userdata }) {
                     <li className='profile-togglebar-darkmode' onClick={() => {
                         if (confirm("are you sure, you want to logout?")) {
                             localStorage.clear();
-                            window.location.reload();
+                            window.location.href = '/login';
                         } else {
                             alert("Good Choice")
                         }

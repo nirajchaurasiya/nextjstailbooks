@@ -26,7 +26,7 @@ export default function Share({ userdata, watch }) {
                 fd.append('postImage', postImage);
                 axios.post('/backend/api/posts', fd)
                     .then((data) => {
-                        window.location.reload();
+                        window.location.href = '/login';
                     })
                     .catch((err) => {
                         console.log(err)

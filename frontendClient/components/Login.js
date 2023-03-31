@@ -22,7 +22,7 @@ export default function Login() {
                     // console.log(data.data)
                     if (data.data.code === "1") {
                         localStorage.setItem('tailbooknetlifyuser', JSON.stringify(data.data.user))
-                        window.location.reload();
+                        window.location.href = '/'
                     }
                     else {
                         console.log(data.data.msg)

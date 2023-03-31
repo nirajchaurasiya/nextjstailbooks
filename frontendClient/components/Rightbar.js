@@ -43,8 +43,8 @@ export default function Rightbar({ userId }) {
 
                     <hr className="hr-rightbar-line" />
                     <div className="online-friends">
-                        <p>Online Friends</p>
-                        {allUsers.map((e) => {
+                        <p>All Users In This Site</p>
+                        {allUsers.filter(e => e._id !== userId).map((e) => {
                             return (
                                 <div key={e._id} className="online-friends-box" onClick={() => { setShowChatBox(!showChatBox); setName(e.name); setProfile(`/backend/${e.profile}`); setMsgBoxText(showChatBox ? 'Message' : <RxCross1 style={{ color: "red", fontSize: "13px" }} />) }}>
                                     <div className="online-friends-img">

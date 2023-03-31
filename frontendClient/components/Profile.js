@@ -46,7 +46,7 @@ export default function Profile({ userdata, userId }) {
                     .then((data) => {
                         if (data.data.status === "1") {
                             localStorage.setItem('tailbooknetlifyuser', JSON.stringify(data.data.msg))
-                            window.location.reload();
+                            window.location.href = '/'
                         } else {
                             console.log(data.data.msg)
                         }

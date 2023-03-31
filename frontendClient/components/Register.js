@@ -34,7 +34,15 @@ export default function Register() {
 
             await axios.post('/backend/api/auth/register', fd)
                 .then((data) => {
-                    console.log(data.data.msg)
+                    if (data.data.code === 1) {
+                        console.log(data.data.msg)
+                    }
+                    else if (data.data.code === 2) {
+                        alert(data.data.msg);
+                    }
+                    else {
+                        alert('Something went wrong! Please try again later.')
+                    }
                 })
                 .catch((err) => {
                     console.log(err)

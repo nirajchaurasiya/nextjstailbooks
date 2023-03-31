@@ -3,3 +3,25 @@
   width: 90vw;
   margin: auto;
 }
+.user-not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 40vh;
+  align-items: center;
+}
+.user-not-found img {
+  width: 200px;
+  display: flex;
+  margin: auto;
+}
+.user-not-found h2 {
+  font-size: 30px;
+  text-align: center;
+}
+.login-error-btn-user-not-found {
+  background-color: transparent;
+  font-size: 30px;
+  cursor: pointer;
+  border-bottom: 1px dotted blue;
+}

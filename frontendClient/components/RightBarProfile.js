@@ -55,7 +55,7 @@ export default function RightBarProfile({ userdata, userId }) {
                     <div className='profile-friends'>
                         <p>User&apos;s Friends</p>
                         <div className="your-friends-profile">
-                            {allUsers.map((e) => {
+                            {allUsers.filter(e => e._id !== userId).map((e) => {
                                 return (
                                     <Link key={e} href={`/profile/${e._id}`} style={{ color: "var(--text-color)", textDecoration: "none" }}>
                                         <div>
