@@ -6,7 +6,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 require('dotenv').config()
 require('./connect/connect')
-const PORT = process.env.PORT
+const PORT = 5000
 const auth = require('./Router/auth/auth')
 const posts = require('./Router/posts/posts')
 const user = require('./Router/user/user');
