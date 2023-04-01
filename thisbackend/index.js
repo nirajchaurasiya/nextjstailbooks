@@ -1,5 +1,5 @@
-const server = require('express')
-const app = server();
+const express = require('express')
+const app = express();
 const helmet = require('helmet')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -11,10 +11,10 @@ const auth = require('./Router/auth/auth')
 const posts = require('./Router/posts/posts')
 const user = require('./Router/user/user');
 const path = require('path');
-app.use(server.static('/images'))
-app.use("/images", server.static(path.join(__dirname, "/images")))
+app.use(express.static('/images'))
+app.use("/images", express.static(path.join(__dirname, "/images")))
 app.use(bodyParser.json())
-app.use(server.json());
+app.use(express.json());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }))
 app.use(morgan("common"));
 const corsOptions = {
