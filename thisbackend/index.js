@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express();
-// const helmet = require('helmet')
+const helmet = require('helmet')
 const bodyParser = require('body-parser')
-// const cors = require('cors')
-// const morgan = require('morgan')
+const cors = require('cors')
+const morgan = require('morgan')
 require('dotenv').config()
 require('./connect/connect')
 const PORT = 5000
@@ -15,18 +15,18 @@ app.use(express.static('/images'))
 app.use("/images", express.static(path.join(__dirname, "/images")))
 app.use(bodyParser.json())
 app.use(express.json());
-// app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }))
-// app.use(morgan("common"));
-// const corsOptions = {
-//     // origin: 'http://localhost:3000'
-//     origin: 'https://tailbooks.netlify.app'
-// };
-// app.use(cors(corsOptions))
-// app.use(function (req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }))
+app.use(morgan("common"));
+const corsOptions = {
+    // origin: 'http://localhost:3000'
+    origin: 'https://tailbooks.netlify.app'
+};
+app.use(cors(corsOptions))
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 
 app.use('/api/auth', auth);
