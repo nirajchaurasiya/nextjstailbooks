@@ -16,7 +16,7 @@ export default function Feed({ profile, userId, userdata, watch, allposts }) {
 
     return (
         <div className='feed'>
-            {profile ? <Profile userdata={userdata} userId={userId} /> : watch ? <Share watch={watch} userdata={localStore} /> : ''}
+            {profile ? <Profile localstoreUserId={localstoreUserId} userdata={userdata} userId={userId} /> : watch ? <Share watch={watch} userdata={localStore} /> : ''}
             {userId === localstoreUserId && <Share userdata={userdata} />}
             <br />
             {profile ?

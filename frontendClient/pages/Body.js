@@ -46,7 +46,6 @@ export default function Body({ profile, userId, watch, allPosts }) {
         try {
             await axios.get(`/backend/api/user/user/${userId}`)
                 .then((data) => {
-                    console.log(data.data.user)
                     setUserProfile(data.data.user)
                 })
                 .catch((err) => {

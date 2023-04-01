@@ -20,6 +20,8 @@
 /* body {
   color: white;
   background-color: rgb(26, 28, 28);
+  --nav-color: rgb(26, 28, 28);
+  --border-color: black;
 } */
 button {
   border: none;

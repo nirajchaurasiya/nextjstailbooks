@@ -96,7 +96,11 @@
 .chat-box-user-chat {
   height: 400px;
   width: 300px;
-  background-color: rgb(237, 237, 237);
+  background: linear-gradient(
+    rgb(96, 95, 95),
+    rgb(112, 112, 112),
+    rgb(143, 138, 138)
+  );
   position: fixed;
   bottom: 0;
   border-radius: 10px;

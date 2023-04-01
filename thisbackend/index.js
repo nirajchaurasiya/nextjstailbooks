@@ -33,6 +33,9 @@ app.use('/api/auth', auth);
 app.use('/api/posts', posts);
 app.use('/api/user', user);
 
+app.get('/', (req, res) => {
+    res.send({ "msg": "Working" })
+})
 
 
 

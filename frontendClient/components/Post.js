@@ -14,7 +14,7 @@ export default function Post({ data, userdata }) {
             if (IsLike) {
                 axios.put(`/backend/api/posts/${data?._id}`, { userId: userdata._id })
                     .then((data) => {
-                        console.log(data.data)
+                        // console.log(data.data)
                         setIsLike(false);
                         setLikes(likes - 1)
                     })

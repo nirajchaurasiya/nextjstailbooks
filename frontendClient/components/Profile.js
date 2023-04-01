@@ -3,7 +3,7 @@ import { useState } from "react"
 import { } from 'react-icons/ai'
 import { RxCross1 } from 'react-icons/rx'
 import Spinner from "./Spinner";
-export default function Profile({ userdata, userId }) {
+export default function Profile({ userdata, userId, localstoreUserId }) {
     const [cover, setCover] = useState('')
     const [toShow, setToShow] = useState(false)
     const [textToShowToBtn, setTextToShowToBtn] = useState('Update Images')
@@ -68,17 +68,18 @@ export default function Profile({ userdata, userId }) {
                 userdata ? <div className='profile-picture'>
                     <div className="user-cover">
                         <img src={userdata.cover ? `/backend/${userdata.cover}` : `/backend/${userdata.profile}`} />
-                        <button onClick={() => { setToShow(!toShow); setTextToShowToBtn(!toShow ? <RxCross1 /> : 'Update Images') }}>{textToShowToBtn}</button>
+                        {userId === localstoreUserId && <button onClick={() => { setToShow(!toShow); setTextToShowToBtn(!toShow ? <RxCross1 /> : 'Update Images') }}>{textToShowToBtn}</button>}
                     </div>
-                    {
-                        toShow &&
-                            userdata._id === userId ? <>
 
-                            <div className="upload-cover-from-profile">
-                                <input onChange={(e) => { setCover(e.target.files[0]) }} type="file" name="cover" id="cover" />
-                                <button onClick={changeTheCoverPicture}>Update Cover</button>
-                                <button onClick={changeTheProfilePicture}>Update Profile</button>
-                            </div></> : ""
+
+                    {(userId === localstoreUserId) &&
+                        toShow &&
+                        userdata._id === userId ? <>
+                        <div className="upload-cover-from-profile">
+                            <input onChange={(e) => { setCover(e.target.files[0]) }} type="file" name="cover" id="cover" />
+                            <button onClick={changeTheCoverPicture}>Update Cover</button>
+                            <button onClick={changeTheProfilePicture}>Update Profile</button>
+                        </div></> : ""
 
                     }
                     <div className="user-profile">
