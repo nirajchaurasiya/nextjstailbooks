@@ -13,8 +13,8 @@ module.exports = {
     return [
       {
         source: '/backend/:path*',
-        // destination: 'https://backend.nirajchaurasiya.com/:path*',
-        destination: 'http://localhost:5000/:path*',
+        destination: 'https://tailbooksdb.onrender.com/:path*',
+        // destination: 'http://localhost:5000/:path*',
       },
     ]
   }
