@@ -13,7 +13,7 @@ module.exports = {
     return [
       {
         source: '/backend/:path*',
-        destination: 'https://tailbooksdb.onrender.com/:path*',
+        destination: 'https://nextjstailbooks-production.up.railway.app/:path*',
         // destination: 'http://localhost:5000/:path*',
       },
     ]
